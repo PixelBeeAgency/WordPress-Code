@@ -1,0 +1,8 @@
+add_action( 'elementor_pro/forms/validation/tel', function( $field, $record, $ajax_handler ) {
+
+	// Match this format XXX-XXX-XXXX, 123-456-7890
+
+	if ( preg_match( '/[0-9]{3}-[0-9]{3}-[0-9]{4}/', $field['value'] ) !== 1 ) {
+		$ajax_handler->add_error( $field['id'], 'Please make sure the phone number is in XXX-XXX-XXXX format, eg: 123-456-7890' );
+	}
+}, 10, 3 );
