@@ -1,0 +1,8 @@
+// Redirect WooCommerce Shop URL
+function wpc_shop_url_redirect() {
+    if( is_shop() ){
+        wp_redirect( home_url( '/custom-page/' ) ); // Assign custom internal page here
+        exit();
+    }
+}
+add_action( 'template_redirect', 'wpc_shop_url_redirect' );
