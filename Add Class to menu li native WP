@@ -1,0 +1,19 @@
+$args = array(
+    'container'     => '',
+    'theme_location'=> 'your-theme-loc',
+    'depth'         => 1,
+    'fallback_cb'   => false,
+    'add_li_class'  => 'your-class-name1 your-class-name-2'
+    );
+wp_nav_menu($args);
+Notice the new 'add_li_class' argument.
+
+And set the filter on functions.php
+
+function add_additional_class_on_li($classes, $item, $args) {
+    if(isset($args->add_li_class)) {
+        $classes[] = $args->add_li_class;
+    }
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
