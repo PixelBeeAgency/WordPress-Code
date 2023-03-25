@@ -1,0 +1,20 @@
+// redirect non login user from wp admin to login
+add_action( 'wp_loaded', 'redirect_to_home', 9);
+
+function redirect_to_home() {
+
+	if ( is_admin() && ! is_user_logged_in() && ! defined( 'DOING_AJAX' ) ) {
+
+		wp_redirect( '/login' ); 
+	    exit;
+    }	
+}
+
+add_action('init','custom_login');
+function custom_login(){
+ global $pagenow;
+ if( 'wp-login.php' == $pagenow ) {
+  wp_redirect('/sign-in/');
+  exit();
+ }
+}
