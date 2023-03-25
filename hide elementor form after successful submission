@@ -1,0 +1,19 @@
+https://itchycode.com/hide-elementor-form-after-successful-submission-via-jquery/
+
+<script>
+	
+	 (($)=>{
+		 
+		 $(document).ready(()=>{
+			 
+			 	// on submit_success event triggered on my specific form #itchy002
+				$(document).on('submit_success', '#itchy002',(e)=>{
+						// hide all fields in this form
+						$('#itchy002').find('.elementor-form-fields-wrapper').hide()
+				})
+			 
+		 })
+		 
+	 })(jQuery)
+
+</script>
