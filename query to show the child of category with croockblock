@@ -1,0 +1,23 @@
+It is not easy, but possible. First of all, you need to create an Advanced query https://prnt.sc/k3XFht5oMpYs
+https://crocoblock.com/knowledge-base/articles/jetengine-query-builder-sql-query-type/
+SELECT second_level.term_id
+
+FROM {prefix}term_taxonomy AS second_level
+
+WHERE 
+taxonomy = "product_cat"
+   AND
+parent 
+   IN
+( 
+   SELECT first_level.term_id
+   FROM {prefix}term_taxonomy AS first_level
+   WHERE 
+   first_level.parent = 0
+)
+Then create taxonomy query https://prnt.sc/UXRR8pTSdXMN
+and use this tax query as a source in the filter https://prnt.sc/oeNDlnQYNxrG
+
+
+
+added in Laseniora website
