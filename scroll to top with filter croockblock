@@ -1,0 +1,15 @@
+jQuery(document).ready(function( $ ){
+
+ $( document ).on( 'jet-filter-content-rendered', function() {
+
+  $([document.documentElement, document.body]).animate({
+
+
+    scrollTop: $(".jet-listing-grid").offset().top - 100
+
+
+}, 1000);
+
+    });
+
+});
