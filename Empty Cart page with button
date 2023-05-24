@@ -1,0 +1,19 @@
+/**
+ * Add empty cart button to cart page
+ */
+function add_empty_cart_button() {
+    if (is_cart()) {
+        echo '<a class="button empty-cart-button" href="'.esc_url(wc_get_cart_url()).'?empty-cart=true">'.__('Empty Cart', 'woocommerce').'</a>';
+    }
+}
+add_action('woocommerce_cart_actions', 'add_empty_cart_button');
+
+/**
+ * Empty the cart when the empty cart button is clicked
+ */
+function empty_cart_action() {
+    if (isset($_GET['empty-cart']) && $_GET['empty-cart'] === 'true') {
+        WC()->cart->empty_cart();
+    }
+}
+add_action('init', 'empty_cart_action');
